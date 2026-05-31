@@ -1,5 +1,11 @@
-const CACHE = 'inocuidad-v1';
-const FILES = ['./', './index.html', './manifest.json'];
+const CACHE = 'inocuidad-v2';
+const FILES = [
+  '/Inocuidadtestapp/',
+  '/Inocuidadtestapp/index.html',
+  '/Inocuidadtestapp/manifest.json',
+  '/Inocuidadtestapp/icon-192.svg',
+  '/Inocuidadtestapp/icon-512.svg'
+];
 
 self.addEventListener('install', function(e) {
   e.waitUntil(caches.open(CACHE).then(function(c){ return c.addAll(FILES); }));
@@ -14,7 +20,8 @@ self.addEventListener('activate', function(e) {
 self.addEventListener('fetch', function(e) {
   e.respondWith(
     fetch(e.request).then(function(r){
-      var c=r.clone(); caches.open(CACHE).then(function(cache){cache.put(e.request,c);});
+      var c=r.clone();
+      caches.open(CACHE).then(function(cache){ cache.put(e.request,c); });
       return r;
     }).catch(function(){ return caches.match(e.request); })
   );
