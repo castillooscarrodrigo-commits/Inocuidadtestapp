@@ -13,242 +13,204 @@
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
 :root {
-  --verde: #27500A;
-  --verde-med: #3B6D11;
-  --verde-claro: #639922;
-  --verde-pale: #EAF3DE;
-  --verde-border: #C0DD97;
-  --teal: #085041;
-  --teal-pale: #E1F5EE;
-  --amber: #633806;
-  --amber-pale: #FAEEDA;
-  --bg: #f8f7f4;
-  --bg2: #f1efe8;
-  --borde: #e0ddd5;
-  --texto: #2a2a28;
-  --suave: #888780;
-  --blanco: #ffffff;
-  --sombra: 0 2px 12px rgba(39,80,10,0.10);
+  --verde:#27500A; --verde-med:#3B6D11; --verde-claro:#639922;
+  --verde-pale:#EAF3DE; --verde-border:#C0DD97;
+  --teal:#085041; --teal-pale:#E1F5EE;
+  --amber:#633806; --amber-pale:#FAEEDA;
+  --bg:#f8f7f4; --bg2:#f1efe8; --borde:#e0ddd5;
+  --texto:#2a2a28; --suave:#888780; --blanco:#fff;
+  --sombra:0 2px 12px rgba(39,80,10,0.10);
 }
-* { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
-body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--texto); min-height: 100vh; overscroll-behavior: none; }
-.mono { font-family: 'DM Mono', monospace; }
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent;}
+body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--texto);min-height:100vh;overscroll-behavior:none;}
 
-/* ── HEADER ── */
-.app-header {
-  background: var(--verde);
-  padding: calc(env(safe-area-inset-top, 0px) + 14px) 20px 18px;
-  color: white;
-  position: sticky; top: 0; z-index: 100;
-}
-.app-name { font-size: 10px; letter-spacing: 0.14em; opacity: 0.65; text-transform: uppercase; margin-bottom: 2px; }
-.screen-title { font-size: 20px; font-weight: 700; }
-.subtitle { font-size: 12px; opacity: 0.6; margin-top: 2px; }
-.progress-bar { height: 3px; background: rgba(255,255,255,0.2); border-radius: 2px; margin-top: 14px; }
-.progress-fill { height: 100%; border-radius: 2px; background: var(--verde-border); transition: width 0.4s ease; }
+/* HEADER */
+.app-header{background:var(--verde);padding:calc(env(safe-area-inset-top,0px) + 14px) 20px 18px;color:white;position:sticky;top:0;z-index:100;}
+.app-name{font-size:10px;letter-spacing:.14em;opacity:.65;text-transform:uppercase;margin-bottom:2px;}
+.screen-title{font-size:20px;font-weight:700;}
+.subtitle{font-size:12px;opacity:.6;margin-top:2px;}
+.progress-bar{height:3px;background:rgba(255,255,255,.2);border-radius:2px;margin-top:14px;}
+.progress-fill{height:100%;border-radius:2px;background:var(--verde-border);transition:width .4s ease;}
 
-/* ── STEP DOTS ── */
-.step-dots { display: flex; gap: 5px; padding: 12px 20px 4px; }
-.dot { width: 6px; height: 6px; border-radius: 3px; background: var(--borde); transition: all 0.3s; }
-.dot.active { background: var(--verde-claro); width: 18px; }
-.dot.done { background: var(--verde); }
+/* STEP DOTS */
+.step-dots{display:flex;gap:5px;padding:12px 20px 4px;}
+.dot{width:6px;height:6px;border-radius:3px;background:var(--borde);transition:all .3s;}
+.dot.active{background:var(--verde-claro);width:18px;}
+.dot.done{background:var(--verde);}
 
-/* ── CONTENT ── */
-.content { padding: 16px 16px calc(env(safe-area-inset-bottom,0px) + 80px); }
-.screen { display: none; }
-.screen.active { display: block; animation: fadeIn 0.2s ease; }
-@keyframes fadeIn { from { opacity:0; transform:translateY(6px); } to { opacity:1; transform:none; } }
+/* CONTENT */
+.content{padding:16px 16px calc(env(safe-area-inset-bottom,0px) + 80px);}
+.screen{display:none;}
+.screen.active{display:block;animation:fadeIn .2s ease;}
+@keyframes fadeIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
 
-/* ── SECTION LABELS ── */
-.section-label {
-  font-size: 10px; font-weight: 700; letter-spacing: 0.1em;
-  color: var(--verde-med); text-transform: uppercase;
-  margin: 18px 0 8px; display: flex; justify-content: space-between; align-items: center;
-}
-.section-label .add-link { font-size: 11px; color: var(--verde-claro); cursor: pointer; letter-spacing: 0; text-transform: none; font-weight: 600; }
+/* SECTION LABEL */
+.section-label{font-size:10px;font-weight:700;letter-spacing:.1em;color:var(--verde-med);text-transform:uppercase;margin:18px 0 8px;display:flex;justify-content:space-between;align-items:center;}
+.section-label .add-link{font-size:11px;color:var(--verde-claro);cursor:pointer;letter-spacing:0;text-transform:none;font-weight:600;}
 
-/* ── FIELD GROUPS ── */
-.field-group { background: white; border-radius: 16px; border: 0.5px solid var(--borde); overflow: hidden; margin-bottom: 10px; box-shadow: var(--sombra); }
-.field-row { display: flex; align-items: center; padding: 12px 14px; border-bottom: 0.5px solid #f0ede6; gap: 10px; }
-.field-row:last-child { border-bottom: none; }
-.field-icon { width: 30px; height: 30px; border-radius: 8px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 15px; }
-.fi-green { background: var(--verde-pale); }
-.fi-amber { background: var(--amber-pale); }
-.fi-teal  { background: var(--teal-pale); }
-.fi-gray  { background: var(--bg2); }
-.fi-blue  { background: #E6F1FB; }
-.field-content { flex: 1; min-width: 0; }
-.field-label { font-size: 10px; color: var(--suave); font-weight: 500; margin-bottom: 2px; }
-.field-value { font-size: 13px; font-weight: 600; color: var(--texto); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-.field-value.placeholder { color: #bbb8b0; font-weight: 400; }
-.field-arrow { color: #c8c5bc; font-size: 18px; flex-shrink: 0; }
-.field-input {
-  width: 100%; border: none; outline: none; font-size: 13px; font-weight: 600;
-  font-family: 'DM Sans', sans-serif; color: var(--texto); background: transparent;
-}
-.field-input.mono { font-family: 'DM Mono', monospace; }
-.field-input::placeholder { color: #bbb8b0; font-weight: 400; }
+/* FIELD GROUPS */
+.field-group{background:white;border-radius:16px;border:.5px solid var(--borde);overflow:hidden;margin-bottom:10px;box-shadow:var(--sombra);}
+.field-row{display:flex;align-items:center;padding:12px 14px;border-bottom:.5px solid #f0ede6;gap:10px;}
+.field-row:last-child{border-bottom:none;}
+.field-icon{width:30px;height:30px;border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:15px;}
+.fi-green{background:var(--verde-pale);}
+.fi-amber{background:var(--amber-pale);}
+.fi-teal{background:var(--teal-pale);}
+.fi-gray{background:var(--bg2);}
+.fi-blue{background:#E6F1FB;}
+.fi-red{background:#FDECEA;}
+.field-content{flex:1;min-width:0;}
+.field-label{font-size:10px;color:var(--suave);font-weight:500;margin-bottom:2px;}
+.field-input{width:100%;border:none;outline:none;font-size:13px;font-weight:600;font-family:'DM Sans',sans-serif;color:var(--texto);background:transparent;}
+.field-input.mono{font-family:'DM Mono',monospace;}
+.field-input::placeholder{color:#bbb8b0;font-weight:400;}
+.field-input[type=datetime-local]{font-size:12px;}
 
-/* ── TYPE CHIPS ── */
-.type-chips { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; padding: 10px; }
-.type-chip {
-  padding: 10px 8px; border-radius: 10px; text-align: center;
-  font-size: 12px; font-weight: 600; border: 1.5px solid transparent; cursor: pointer; transition: all 0.15s;
-}
-.type-chip.active { background: var(--verde-pale); border-color: var(--verde-claro); color: var(--verde); }
-.type-chip.inactive { background: var(--bg2); color: var(--suave); border-color: var(--borde); }
-.type-chip:active { transform: scale(0.96); }
+/* TIPO CHIPS */
+.type-chips{display:grid;grid-template-columns:1fr 1fr;gap:6px;padding:10px;}
+.type-chip{padding:10px 8px;border-radius:10px;text-align:center;font-size:12px;font-weight:600;border:1.5px solid transparent;cursor:pointer;transition:all .15s;}
+.type-chip.active{background:var(--verde-pale);border-color:var(--verde-claro);color:var(--verde);}
+.type-chip.inactive{background:var(--bg2);color:var(--suave);border-color:var(--borde);}
+.type-chip:active{transform:scale(.96);}
 
-/* ── DATE ROW ── */
-.date-row { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 10px; }
-.date-card { background: white; border-radius: 14px; border: 0.5px solid var(--borde); padding: 12px 14px; box-shadow: var(--sombra); }
-.date-card .lbl { font-size: 10px; color: var(--suave); font-weight: 500; margin-bottom: 4px; }
-.date-card .val { font-size: 13px; font-weight: 700; color: var(--texto); }
-.date-card .val.placeholder { color: #bbb8b0; font-weight: 400; }
-.date-card input[type=date] { border: none; outline: none; font-size: 13px; font-weight: 700; font-family: 'DM Sans', sans-serif; color: var(--texto); background: transparent; width: 100%; }
+/* DATE ROW */
+.date-row{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:10px;}
+.date-card{background:white;border-radius:14px;border:.5px solid var(--borde);padding:12px 14px;box-shadow:var(--sombra);}
+.date-card .lbl{font-size:10px;color:var(--suave);font-weight:500;margin-bottom:4px;}
+.date-card input{border:none;outline:none;font-size:12px;font-weight:700;font-family:'DM Sans',sans-serif;color:var(--texto);background:transparent;width:100%;}
 
-/* ── APPLICATORS ── */
-.applicator-row { display: flex; align-items: center; padding: 11px 14px; border-bottom: 0.5px solid #f0ede6; gap: 10px; }
-.applicator-row:last-child { border-bottom: none; }
-.avatar { width: 34px; height: 34px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 700; flex-shrink: 0; }
-.applicator-name { font-size: 13px; font-weight: 600; color: var(--texto); }
-.applicator-role { font-size: 11px; color: var(--suave); margin-top: 1px; }
-.tag { display: inline-block; padding: 3px 10px; border-radius: 6px; font-size: 11px; font-weight: 700; }
-.tag-green { background: var(--verde-pale); color: var(--verde); }
-.tag-teal  { background: var(--teal-pale);  color: var(--teal); }
-.tag-amber { background: var(--amber-pale); color: var(--amber); }
-.add-btn { display: flex; align-items: center; gap: 8px; padding: 12px 14px; color: var(--verde-claro); font-size: 13px; font-weight: 600; cursor: pointer; }
-.add-circle { width: 24px; height: 24px; border-radius: 50%; border: 1.5px dashed var(--verde-claro); display: flex; align-items: center; justify-content: center; font-size: 18px; line-height: 1; }
+/* CHECK CHIPS */
+.check-chips{display:flex;flex-wrap:wrap;gap:6px;padding:10px;}
+.check-chip{display:flex;align-items:center;gap:5px;padding:8px 11px;border-radius:10px;font-size:12px;font-weight:600;border:1.5px solid transparent;cursor:pointer;transition:all .15s;user-select:none;}
+.check-chip.on{background:var(--verde-pale);border-color:var(--verde-claro);color:var(--verde);}
+.check-chip.off{background:var(--bg2);border-color:var(--borde);color:var(--suave);}
+.check-chip:active{transform:scale(.95);}
+.chk{width:15px;height:15px;border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:9px;flex-shrink:0;}
+.check-chip.on .chk{background:var(--verde-claro);color:white;}
+.check-chip.off .chk{background:var(--borde);}
 
-/* ── CHECK CHIPS ── */
-.check-chips { display: flex; flex-wrap: wrap; gap: 6px; padding: 10px; }
-.check-chip {
-  display: flex; align-items: center; gap: 5px; padding: 8px 11px;
-  border-radius: 10px; font-size: 12px; font-weight: 600; border: 1.5px solid transparent; cursor: pointer; transition: all 0.15s;
-  user-select: none;
-}
-.check-chip.on  { background: var(--verde-pale); border-color: var(--verde-claro); color: var(--verde); }
-.check-chip.off { background: var(--bg2); border-color: var(--borde); color: var(--suave); }
-.check-chip:active { transform: scale(0.95); }
-.chk { width: 15px; height: 15px; border-radius: 4px; display: flex; align-items: center; justify-content: center; font-size: 9px; flex-shrink: 0; }
-.check-chip.on  .chk { background: var(--verde-claro); color: white; }
-.check-chip.off .chk { background: var(--borde); }
+/* ETAPA CHIPS */
+.etapa-chips{display:grid;grid-template-columns:1fr 1fr;gap:6px;padding:10px;}
+.etapa-chip{padding:9px 6px;border-radius:10px;text-align:center;font-size:11px;font-weight:600;border:1.5px solid transparent;line-height:1.4;cursor:pointer;transition:all .15s;}
+.etapa-chip.on{background:var(--verde-pale);border-color:var(--verde-claro);color:var(--verde);}
+.etapa-chip.off{background:var(--bg2);border-color:var(--borde);color:var(--suave);}
+.etapa-chip:active{transform:scale(.95);}
 
-/* ── ETAPA CHIPS ── */
-.etapa-chips { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; padding: 10px; }
-.etapa-chip {
-  padding: 9px 6px; border-radius: 10px; text-align: center;
-  font-size: 11px; font-weight: 600; border: 1.5px solid transparent;
-  line-height: 1.4; cursor: pointer; transition: all 0.15s;
-}
-.etapa-chip.on  { background: var(--verde-pale); border-color: var(--verde-claro); color: var(--verde); }
-.etapa-chip.off { background: var(--bg2); border-color: var(--borde); color: var(--suave); }
-.etapa-chip:active { transform: scale(0.95); }
+/* MERCADO CHIPS */
+.mercado-chips{display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px;padding:10px;}
+.mercado-chip{padding:10px 6px;border-radius:10px;text-align:center;font-size:12px;font-weight:600;border:1.5px solid transparent;cursor:pointer;transition:all .15s;}
+.mercado-chip.active{background:var(--teal-pale);border-color:#52b788;color:var(--teal);}
+.mercado-chip.inactive{background:var(--bg2);color:var(--suave);border-color:var(--borde);}
+.mercado-chip:active{transform:scale(.95);}
 
-/* ── NUM INPUT ── */
-.num-input-row { display: flex; align-items: center; padding: 11px 14px; border-bottom: 0.5px solid #f0ede6; gap: 10px; }
-.num-input-row:last-child { border-bottom: none; }
-.num-input-box { margin-left: auto; display: flex; align-items: center; gap: 6px; }
-.num-input-box input {
-  width: 80px; border: 1.5px solid var(--verde-border); border-radius: 9px;
-  padding: 6px 8px; font-size: 14px; font-family: 'DM Mono', monospace;
-  color: var(--texto); text-align: right; background: white; outline: none;
-}
-.num-input-box input:focus { border-color: var(--verde-claro); }
-.num-unit { font-size: 11px; color: var(--suave); min-width: 18px; font-weight: 500; }
+/* NUM INPUT */
+.num-input-row{display:flex;align-items:center;padding:11px 14px;border-bottom:.5px solid #f0ede6;gap:10px;}
+.num-input-row:last-child{border-bottom:none;}
+.num-input-box{margin-left:auto;display:flex;align-items:center;gap:6px;}
+.num-input-box input{width:80px;border:1.5px solid var(--verde-border);border-radius:9px;padding:6px 8px;font-size:14px;font-family:'DM Mono',monospace;color:var(--texto);text-align:right;background:white;outline:none;}
+.num-unit{font-size:11px;color:var(--suave);min-width:18px;font-weight:500;}
 
-/* ── SUMMARY ── */
-.summary-card { background: var(--verde-pale); border: 1px solid var(--verde-border); border-radius: 16px; padding: 14px 16px; margin-bottom: 12px; }
-.summary-row { display: flex; justify-content: space-between; align-items: center; padding: 5px 0; }
-.summary-key { font-size: 12px; color: var(--verde-med); }
-.summary-val { font-size: 12px; font-weight: 700; color: var(--verde); text-align: right; max-width: 60%; }
-.s-divider { height: 0.5px; background: var(--verde-border); margin: 2px 0; }
+/* FOTO SECTION */
+.foto-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;padding:10px;}
+.foto-slot{aspect-ratio:1;border-radius:12px;background:var(--bg2);border:1.5px dashed var(--borde);display:flex;flex-direction:column;align-items:center;justify-content:center;cursor:pointer;overflow:hidden;transition:all .15s;position:relative;}
+.foto-slot:active{transform:scale(.96);}
+.foto-slot .f-icon{font-size:22px;margin-bottom:4px;}
+.foto-slot .f-label{font-size:10px;color:var(--suave);font-weight:500;text-align:center;}
+.foto-slot img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0;}
+.foto-slot .f-del{position:absolute;top:4px;right:4px;background:rgba(0,0,0,.5);color:white;border:none;border-radius:50%;width:20px;height:20px;font-size:11px;cursor:pointer;display:flex;align-items:center;justify-content:center;}
+.foto-add{background:var(--verde-pale);border-color:var(--verde-border);}
+.foto-add .f-icon{color:var(--verde-claro);}
 
-/* ── BUTTONS ── */
-.btn-primary {
-  width: 100%; background: var(--verde); color: white; border: none;
-  border-radius: 14px; padding: 16px; font-size: 15px; font-weight: 700;
-  font-family: 'DM Sans', sans-serif; cursor: pointer; margin-top: 10px;
-  transition: all 0.15s; letter-spacing: 0.01em;
-}
-.btn-primary:active { background: #1a3a06; transform: scale(0.98); }
-.btn-secondary {
-  width: 100%; background: white; color: var(--verde); border: 1.5px solid var(--verde-border);
-  border-radius: 14px; padding: 14px; font-size: 14px; font-weight: 600;
-  font-family: 'DM Sans', sans-serif; cursor: pointer; margin-top: 8px; transition: all 0.15s;
-}
-.btn-secondary:active { background: var(--verde-pale); transform: scale(0.98); }
+/* SUMMARY */
+.summary-card{background:var(--verde-pale);border:1px solid var(--verde-border);border-radius:16px;padding:14px 16px;margin-bottom:12px;}
+.summary-row{display:flex;justify-content:space-between;align-items:center;padding:5px 0;}
+.summary-key{font-size:12px;color:var(--verde-med);}
+.summary-val{font-size:12px;font-weight:700;color:var(--verde);text-align:right;max-width:60%;}
+.s-divider{height:.5px;background:var(--verde-border);margin:2px 0;}
 
-/* ── SUCCESS SCREEN ── */
-.check-circle { width: 64px; height: 64px; border-radius: 50%; background: var(--verde-claro); display: flex; align-items: center; justify-content: center; font-size: 30px; margin: 0 auto 14px; color: white; box-shadow: 0 4px 20px rgba(99,153,34,0.4); }
-.folio-box { background: var(--bg2); border-radius: 14px; padding: 16px 18px; width: 100%; margin-bottom: 20px; }
-.folio-label { font-size: 10px; color: var(--suave); font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 8px; }
-.folio-num { font-family: 'DM Mono', monospace; font-size: 17px; font-weight: 700; color: var(--texto); letter-spacing: 0.04em; }
-.folio-date { font-size: 11px; color: var(--suave); margin-top: 4px; }
-.action-cards { display: flex; gap: 8px; width: 100%; margin-bottom: 14px; }
-.action-card { flex: 1; border-radius: 12px; padding: 14px; text-align: center; cursor: pointer; transition: all 0.15s; }
-.action-card:active { transform: scale(0.96); }
-.ac-teal  { background: var(--teal-pale); color: var(--teal); }
-.ac-amber { background: var(--amber-pale); color: var(--amber); }
-.action-card .ac-icon { font-size: 22px; margin-bottom: 4px; }
-.action-card .ac-label { font-size: 11px; font-weight: 700; }
+/* BUTTONS */
+.btn-primary{width:100%;background:var(--verde);color:white;border:none;border-radius:14px;padding:16px;font-size:15px;font-weight:700;font-family:'DM Sans',sans-serif;cursor:pointer;margin-top:10px;transition:all .15s;}
+.btn-primary:active{background:#1a3a06;transform:scale(.98);}
+.btn-secondary{width:100%;background:white;color:var(--verde);border:1.5px solid var(--verde-border);border-radius:14px;padding:14px;font-size:14px;font-weight:600;font-family:'DM Sans',sans-serif;cursor:pointer;margin-top:8px;transition:all .15s;}
+.btn-secondary:active{background:var(--verde-pale);transform:scale(.98);}
 
-/* ── NAV BAR ── */
-.nav-bar {
-  position: fixed; bottom: 0; left: 0; right: 0;
-  background: white; border-top: 0.5px solid var(--borde);
-  display: flex; padding: 10px 0 calc(env(safe-area-inset-bottom,0px) + 10px);
-  z-index: 100; box-shadow: 0 -4px 20px rgba(0,0,0,0.06);
-}
-.nav-item { flex: 1; display: flex; flex-direction: column; align-items: center; gap: 3px; font-size: 10px; color: var(--suave); cursor: pointer; transition: color 0.15s; }
-.nav-item.active { color: var(--verde); }
-.nav-dot { width: 24px; height: 24px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 15px; }
-.nav-item.active .nav-dot { background: var(--verde-pale); }
+/* APPLICATORS */
+.applicator-row{display:flex;align-items:center;padding:11px 14px;border-bottom:.5px solid #f0ede6;gap:10px;}
+.applicator-row:last-child{border-bottom:none;}
+.avatar{width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;flex-shrink:0;}
+.applicator-name{font-size:13px;font-weight:600;color:var(--texto);}
+.applicator-role{font-size:11px;color:var(--suave);margin-top:1px;}
+.tag{display:inline-block;padding:3px 10px;border-radius:6px;font-size:11px;font-weight:700;}
+.tag-green{background:var(--verde-pale);color:var(--verde);}
+.add-btn{display:flex;align-items:center;gap:8px;padding:12px 14px;color:var(--verde-claro);font-size:13px;font-weight:600;cursor:pointer;}
+.add-circle{width:24px;height:24px;border-radius:50%;border:1.5px dashed var(--verde-claro);display:flex;align-items:center;justify-content:center;font-size:18px;line-height:1;}
 
-/* ── TOAST ── */
-.toast {
-  position: fixed; bottom: calc(70px + env(safe-area-inset-bottom,0px)); left: 50%;
-  transform: translateX(-50%) translateY(20px); opacity: 0;
-  background: var(--verde); color: white; padding: 11px 22px;
-  border-radius: 20px; font-size: 13px; font-weight: 600;
-  transition: all 0.3s; z-index: 999; white-space: nowrap; pointer-events: none;
-}
-.toast.show { transform: translateX(-50%) translateY(0); opacity: 1; }
+/* SUCCESS */
+.check-circle{width:64px;height:64px;border-radius:50%;background:var(--verde-claro);display:flex;align-items:center;justify-content:center;font-size:30px;margin:0 auto 14px;color:white;box-shadow:0 4px 20px rgba(99,153,34,.4);}
+.folio-box{background:var(--bg2);border-radius:14px;padding:16px 18px;width:100%;margin-bottom:20px;}
+.folio-label{font-size:10px;color:var(--suave);font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin-bottom:8px;}
+.folio-num{font-family:'DM Mono',monospace;font-size:17px;font-weight:700;color:var(--texto);letter-spacing:.04em;}
+.folio-date{font-size:11px;color:var(--suave);margin-top:4px;}
+.action-cards{display:flex;gap:8px;width:100%;margin-bottom:14px;}
+.action-card{flex:1;border-radius:12px;padding:14px;text-align:center;cursor:pointer;transition:all .15s;}
+.action-card:active{transform:scale(.96);}
+.ac-teal{background:var(--teal-pale);color:var(--teal);}
+.ac-amber{background:var(--amber-pale);color:var(--amber);}
+.action-card .ac-icon{font-size:22px;margin-bottom:4px;}
+.action-card .ac-label{font-size:11px;font-weight:700;}
 
-/* ── MODAL ── */
-.modal-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.45); z-index: 200; align-items: flex-end; }
-.modal-overlay.open { display: flex; }
-.modal { background: white; border-radius: 24px 24px 0 0; padding: 20px 20px calc(env(safe-area-inset-bottom,0px) + 20px); width: 100%; max-height: 80vh; overflow-y: auto; animation: slideUp 0.25s ease; }
-@keyframes slideUp { from { transform: translateY(100%); } to { transform: none; } }
-.modal-title { font-size: 16px; font-weight: 700; color: var(--texto); margin-bottom: 16px; }
-.modal-input { width: 100%; padding: 12px 14px; border: 1.5px solid var(--borde); border-radius: 12px; font-size: 14px; font-family: 'DM Sans', sans-serif; color: var(--texto); outline: none; margin-bottom: 10px; }
-.modal-input:focus { border-color: var(--verde-claro); }
+/* NAV */
+.nav-bar{position:fixed;bottom:0;left:0;right:0;background:white;border-top:.5px solid var(--borde);display:flex;padding:10px 0 calc(env(safe-area-inset-bottom,0px) + 10px);z-index:100;box-shadow:0 -4px 20px rgba(0,0,0,.06);}
+.nav-item{flex:1;display:flex;flex-direction:column;align-items:center;gap:3px;font-size:10px;color:var(--suave);cursor:pointer;}
+.nav-item.active{color:var(--verde);}
+.nav-dot{width:24px;height:24px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:15px;}
+.nav-item.active .nav-dot{background:var(--verde-pale);}
 
-/* ── INSTALL BANNER ── */
-#install-banner { display: none; position: fixed; bottom: calc(70px + env(safe-area-inset-bottom,0px) + 8px); left: 16px; right: 16px; background: var(--verde); color: white; border-radius: 16px; padding: 14px 16px; z-index: 150; box-shadow: 0 4px 20px rgba(0,0,0,0.2); }
-#install-banner.show { display: flex; align-items: center; gap: 12px; }
-.ib-text { flex: 1; }
-.ib-title { font-weight: 700; font-size: 14px; }
-.ib-sub { font-size: 12px; opacity: 0.8; }
-.ib-btn { background: white; color: var(--verde); border: none; border-radius: 10px; padding: 8px 14px; font-size: 13px; font-weight: 700; cursor: pointer; font-family: 'DM Sans', sans-serif; white-space: nowrap; }
-.ib-close { background: transparent; color: rgba(255,255,255,0.7); border: none; font-size: 18px; cursor: pointer; padding: 0 4px; }
+/* TOAST */
+.toast{position:fixed;bottom:calc(70px + env(safe-area-inset-bottom,0px));left:50%;transform:translateX(-50%) translateY(20px);opacity:0;background:var(--verde);color:white;padding:11px 22px;border-radius:20px;font-size:13px;font-weight:600;transition:all .3s;z-index:999;white-space:nowrap;pointer-events:none;}
+.toast.show{transform:translateX(-50%) translateY(0);opacity:1;}
 
-/* spinner */
-.spinner { display: inline-block; width: 15px; height: 15px; border: 2px solid rgba(255,255,255,0.35); border-top-color: white; border-radius: 50%; animation: spin 0.7s linear infinite; vertical-align: middle; margin-right: 6px; }
-@keyframes spin { to { transform: rotate(360deg); } }
+/* MODAL */
+.modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:200;align-items:flex-end;}
+.modal-overlay.open{display:flex;}
+.modal{background:white;border-radius:24px 24px 0 0;padding:20px 20px calc(env(safe-area-inset-bottom,0px) + 20px);width:100%;max-height:80vh;overflow-y:auto;animation:slideUp .25s ease;}
+@keyframes slideUp{from{transform:translateY(100%)}to{transform:none}}
+.modal-title{font-size:16px;font-weight:700;color:var(--texto);margin-bottom:16px;}
+.modal-input{width:100%;padding:12px 14px;border:1.5px solid var(--borde);border-radius:12px;font-size:14px;font-family:'DM Sans',sans-serif;color:var(--texto);outline:none;margin-bottom:10px;}
+.modal-input:focus{border-color:var(--verde-claro);}
+
+/* AUTOCOMPLETE */
+.autocomplete-list{position:absolute;left:0;right:0;background:white;border:1.5px solid var(--verde-border);border-radius:12px;box-shadow:var(--sombra);z-index:50;max-height:180px;overflow-y:auto;margin-top:2px;}
+.autocomplete-item{padding:10px 14px;font-size:13px;cursor:pointer;border-bottom:.5px solid #f0ede6;}
+.autocomplete-item:last-child{border-bottom:none;}
+.autocomplete-item:active,.autocomplete-item:hover{background:var(--verde-pale);}
+.autocomplete-item strong{color:var(--verde);}
+.field-wrap{position:relative;}
+
+/* INSTALL BANNER */
+#install-banner{display:none;position:fixed;bottom:calc(70px + env(safe-area-inset-bottom,0px) + 8px);left:16px;right:16px;background:var(--verde);color:white;border-radius:16px;padding:14px 16px;z-index:150;box-shadow:0 4px 20px rgba(0,0,0,.2);}
+#install-banner.show{display:flex;align-items:center;gap:12px;}
+.ib-text{flex:1;}
+.ib-title{font-weight:700;font-size:14px;}
+.ib-sub{font-size:12px;opacity:.8;}
+.ib-btn{background:white;color:var(--verde);border:none;border-radius:10px;padding:8px 14px;font-size:13px;font-weight:700;cursor:pointer;font-family:'DM Sans',sans-serif;white-space:nowrap;}
+.ib-close{background:transparent;color:rgba(255,255,255,.7);border:none;font-size:18px;cursor:pointer;padding:0 4px;}
+
+.spinner{display:inline-block;width:15px;height:15px;border:2px solid rgba(255,255,255,.35);border-top-color:white;border-radius:50%;animation:spin .7s linear infinite;vertical-align:middle;margin-right:6px;}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* AUTO-FILL indicator */
+.autofill-badge{font-size:10px;color:var(--verde-claro);font-weight:600;margin-left:4px;}
 </style>
 </head>
 <body>
 
-<!-- ══ HEADER ══ -->
-<div class="app-header" id="main-header">
+<div class="app-header">
   <div class="app-name">Inocuidad · Sun Belle</div>
   <div class="screen-title" id="header-title">Registro de aplicación</div>
   <div class="subtitle" id="header-sub">Productor, campo y sector</div>
   <div class="progress-bar"><div class="progress-fill" id="progress" style="width:20%"></div></div>
 </div>
-
-<!-- STEP DOTS -->
 <div class="step-dots" id="step-dots-wrap">
   <div class="dot active" id="dot0"></div>
   <div class="dot" id="dot1"></div>
@@ -259,9 +221,29 @@ body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--t
 
 <div class="content">
 
-  <!-- ══ PANTALLA 1: PRODUCTOR Y CAMPO ══ -->
+  <!-- ═══ PANTALLA 1: PRODUCTOR Y CAMPO ═══ -->
   <div class="screen active" id="screen-1">
-    <div class="section-label">Sector</div>
+
+    <div class="section-label">Productor</div>
+    <div class="field-group">
+      <div class="field-row">
+        <div class="field-icon fi-green">🔢</div>
+        <div class="field-content field-wrap">
+          <div class="field-label">Código de productor <span class="autofill-badge" id="badge-codigo"></span></div>
+          <input class="field-input mono" id="f-codigo" placeholder="Ej. 00439" type="text" oninput="buscarProductor(this.value)" autocomplete="off">
+          <div class="autocomplete-list" id="ac-productores" style="display:none"></div>
+        </div>
+      </div>
+      <div class="field-row">
+        <div class="field-icon fi-green">👤</div>
+        <div class="field-content">
+          <div class="field-label">Nombre del productor</div>
+          <input class="field-input" id="f-productor" placeholder="Se llena automático con el código">
+        </div>
+      </div>
+    </div>
+
+    <div class="section-label">Campo, sector y variedad</div>
     <div class="field-group">
       <div class="field-row">
         <div class="field-icon fi-gray">📍</div>
@@ -270,45 +252,58 @@ body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--t
           <input class="field-input mono" id="f-sector" placeholder="Ej. 07" type="number">
         </div>
       </div>
-    </div>
-    <div class="section-label">Productor</div>
-    <div class="field-group">
-      <div class="field-row">
-        <div class="field-icon fi-green">🔢</div>
-        <div class="field-content">
-          <div class="field-label">Código de productor</div>
-          <input class="field-input mono" id="f-codigo" placeholder="Ej. 00439" type="text">
-        </div>
-      </div>
-      <div class="field-row">
-        <div class="field-icon fi-green">👤</div>
-        <div class="field-content">
-          <div class="field-label">Nombre del productor</div>
-          <input class="field-input" id="f-productor" placeholder="Nombre completo">
-        </div>
-      </div>
-    </div>
-    <div class="section-label">Campo y variedad</div>
-    <div class="field-group">
       <div class="field-row">
         <div class="field-icon fi-teal">🌾</div>
+        <div class="field-content field-wrap">
+          <div class="field-label">Número de campo <span class="autofill-badge" id="badge-campo"></span></div>
+          <input class="field-input mono" id="f-num-campo" placeholder="Ej. 1" type="number" oninput="buscarCampo(this.value)" autocomplete="off">
+          <div class="autocomplete-list" id="ac-campos" style="display:none"></div>
+        </div>
+      </div>
+      <div class="field-row">
+        <div class="field-icon fi-teal">🏡</div>
         <div class="field-content">
-          <div class="field-label">Campo</div>
-          <input class="field-input" id="f-campo" placeholder="Ej. 1 — Rancho Nuevo">
+          <div class="field-label">Nombre del campo</div>
+          <input class="field-input" id="f-campo" placeholder="Se llena automático con el número">
         </div>
       </div>
       <div class="field-row">
         <div class="field-icon fi-teal">🫐</div>
         <div class="field-content">
           <div class="field-label">Variedad del cultivo</div>
-          <input class="field-input" id="f-variedad" placeholder="Ej. Amelali — Zarzamora">
+          <input class="field-input" id="f-variedad" placeholder="Se llena automático con el campo">
+        </div>
+      </div>
+      <div class="field-row">
+        <div class="field-icon fi-green">📐</div>
+        <div class="field-content">
+          <div class="field-label">Hectáreas</div>
+          <input class="field-input mono" id="f-has" placeholder="Ej. 2.5" type="number" step="0.1">
         </div>
       </div>
     </div>
+
+    <div class="section-label">Tipo de producción</div>
+    <div class="field-group">
+      <div class="type-chips" id="prod-chips">
+        <div class="type-chip inactive" onclick="selectChipGroup(this,'prod-chips','Convencional')">🌱 Convencional</div>
+        <div class="type-chip inactive" onclick="selectChipGroup(this,'prod-chips','Orgánico')">🍃 Orgánico</div>
+      </div>
+    </div>
+
+    <div class="section-label">Mercado destino</div>
+    <div class="field-group">
+      <div class="mercado-chips" id="mercado-chips">
+        <div class="mercado-chip inactive" onclick="selectChipGroup(this,'mercado-chips','USA')">🇺🇸 USA</div>
+        <div class="mercado-chip inactive" onclick="selectChipGroup(this,'mercado-chips','Europa')">🇪🇺 Europa</div>
+        <div class="mercado-chip inactive" onclick="selectChipGroup(this,'mercado-chips','Asia')">🌏 Asia</div>
+      </div>
+    </div>
+
     <button class="btn-primary" onclick="ir(2)">Continuar →</button>
   </div>
 
-  <!-- ══ PANTALLA 2: PRODUCTO ══ -->
+  <!-- ═══ PANTALLA 2: PRODUCTO ═══ -->
   <div class="screen" id="screen-2">
     <div class="section-label">Información del producto</div>
     <div class="field-group">
@@ -327,31 +322,34 @@ body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--t
         </div>
       </div>
     </div>
+
     <div class="section-label">Tipo de insumo</div>
     <div class="field-group">
       <div class="type-chips" id="type-chips">
-        <div class="type-chip inactive" onclick="selectTipo(this,'Coadyuvante')">Coadyuvante</div>
-        <div class="type-chip inactive" onclick="selectTipo(this,'Fertilizante')">Fertilizante</div>
-        <div class="type-chip inactive" onclick="selectTipo(this,'Fitosanitario')">Fitosanitario</div>
-        <div class="type-chip inactive" onclick="selectTipo(this,'Estimulante')">Estimulante</div>
+        <div class="type-chip inactive" onclick="selectChipGroup(this,'type-chips','Coadyuvante')">Coadyuvante</div>
+        <div class="type-chip inactive" onclick="selectChipGroup(this,'type-chips','Fertilizante')">Fertilizante</div>
+        <div class="type-chip inactive" onclick="selectChipGroup(this,'type-chips','Fitosanitario')">Fitosanitario</div>
+        <div class="type-chip inactive" onclick="selectChipGroup(this,'type-chips','Estimulante')">Estimulante</div>
       </div>
     </div>
-    <div class="section-label">Fechas de aplicación</div>
+
+    <div class="section-label">Fechas y horas de aplicación</div>
     <div class="date-row">
       <div class="date-card">
-        <div class="lbl">Fecha inicio</div>
-        <input type="date" id="f-fecha-ini" style="border:none;outline:none;font-size:13px;font-weight:700;font-family:'DM Sans',sans-serif;color:var(--texto);background:transparent;width:100%;">
+        <div class="lbl">Inicio</div>
+        <input type="datetime-local" id="f-fecha-ini">
       </div>
       <div class="date-card">
-        <div class="lbl">Fecha término</div>
-        <input type="date" id="f-fecha-fin" style="border:none;outline:none;font-size:13px;font-weight:700;font-family:'DM Sans',sans-serif;color:var(--texto);background:transparent;width:100%;">
+        <div class="lbl">Término</div>
+        <input type="datetime-local" id="f-fecha-fin">
       </div>
     </div>
+
     <button class="btn-primary" onclick="ir(3)">Continuar →</button>
     <button class="btn-secondary" onclick="ir(1)">← Regresar</button>
   </div>
 
-  <!-- ══ PANTALLA 3: APLICADORES ══ -->
+  <!-- ═══ PANTALLA 3: APLICADORES ═══ -->
   <div class="screen" id="screen-3">
     <div class="section-label">Fumigadores / aplicadores <span class="add-link" onclick="abrirModalAplicador()">+ Agregar</span></div>
     <div class="field-group" id="lista-aplicadores">
@@ -360,6 +358,7 @@ body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--t
         <span>Agregar aplicador</span>
       </div>
     </div>
+
     <div class="section-label">Ingeniero a cargo</div>
     <div class="field-group">
       <div class="field-row">
@@ -370,11 +369,12 @@ body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--t
         </div>
       </div>
     </div>
+
     <button class="btn-primary" onclick="ir(4)">Continuar →</button>
     <button class="btn-secondary" onclick="ir(2)">← Regresar</button>
   </div>
 
-  <!-- ══ PANTALLA 4: CONDICIONES ══ -->
+  <!-- ═══ PANTALLA 4: CONDICIONES + FOTOS ═══ -->
   <div class="screen" id="screen-4">
     <div class="section-label">Clima (puedes seleccionar varios)</div>
     <div class="field-group">
@@ -385,6 +385,7 @@ body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--t
         <div class="check-chip off" onclick="toggleChip(this)"><div class="chk"></div>💨 Viento</div>
       </div>
     </div>
+
     <div class="section-label">Equipo de protección (EPP)</div>
     <div class="field-group">
       <div class="check-chips" id="epp-chips">
@@ -395,6 +396,7 @@ body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--t
         <div class="check-chip off" onclick="toggleChip(this)"><div class="chk"></div>Anteojos</div>
       </div>
     </div>
+
     <div class="section-label">Equipo de aplicación</div>
     <div class="field-group">
       <div class="check-chips" id="equipo-chips">
@@ -404,6 +406,7 @@ body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--t
         <div class="check-chip off" onclick="toggleChipSingle(this,'equipo-chips')"><div class="chk"></div>Asp. manual</div>
       </div>
     </div>
+
     <div class="section-label">Cantidades</div>
     <div class="field-group">
       <div class="num-input-row">
@@ -417,6 +420,7 @@ body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--t
         <div class="num-input-box"><input type="number" id="f-mezcla" placeholder="0"><span class="num-unit">L</span></div>
       </div>
     </div>
+
     <div class="section-label">Etapa del cultivo</div>
     <div class="field-group">
       <div class="etapa-chips" id="etapa-chips">
@@ -428,20 +432,30 @@ body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--t
         <div class="etapa-chip off" onclick="toggleChipSingle(this,'etapa-chips')">Cosecha</div>
       </div>
     </div>
+
+    <div class="section-label">Evidencia fotográfica <span class="add-link" onclick="document.getElementById('foto-input').click()">+ Agregar foto</span></div>
+    <div class="field-group" style="padding:0">
+      <div class="foto-grid" id="foto-grid">
+        <div class="foto-slot foto-add" onclick="document.getElementById('foto-input').click()">
+          <div class="f-icon">📷</div>
+          <div class="f-label">Agregar foto</div>
+        </div>
+      </div>
+    </div>
+    <input type="file" id="foto-input" accept="image/*" multiple style="display:none" onchange="agregarFotos(this)">
+
     <button class="btn-primary" onclick="ir(5)">Continuar →</button>
     <button class="btn-secondary" onclick="ir(3)">← Regresar</button>
   </div>
 
-  <!-- ══ PANTALLA 5: RESUMEN ══ -->
+  <!-- ═══ PANTALLA 5: RESUMEN ═══ -->
   <div class="screen" id="screen-5">
-    <div class="summary-card" id="summary-content">
-      <!-- se genera dinámicamente -->
-    </div>
+    <div class="summary-card" id="summary-content"></div>
     <button class="btn-primary" id="btn-guardar" onclick="guardarRegistro()">Guardar registro</button>
     <button class="btn-secondary" onclick="ir(4)">Editar información</button>
   </div>
 
-  <!-- ══ PANTALLA 6: ÉXITO ══ -->
+  <!-- ═══ PANTALLA 6: ÉXITO ═══ -->
   <div class="screen" id="screen-6" style="padding-top:20px;text-align:center;">
     <div class="check-circle">✓</div>
     <div style="font-size:20px;font-weight:700;color:var(--texto);margin-bottom:6px;">¡Registro guardado!</div>
@@ -452,14 +466,8 @@ body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--t
       <div class="folio-date" id="folio-date"></div>
     </div>
     <div class="action-cards">
-      <div class="action-card ac-teal" onclick="verPDF()">
-        <div class="ac-icon">📄</div>
-        <div class="ac-label">Ver PDF</div>
-      </div>
-      <div class="action-card ac-amber" onclick="compartir()">
-        <div class="ac-icon">📤</div>
-        <div class="ac-label">Compartir</div>
-      </div>
+      <div class="action-card ac-teal" onclick="verPDF()"><div class="ac-icon">📄</div><div class="ac-label">Ver PDF</div></div>
+      <div class="action-card ac-amber" onclick="compartir()"><div class="ac-icon">📤</div><div class="ac-label">Compartir</div></div>
     </div>
     <button class="btn-primary" onclick="nuevoRegistro()">Nuevo registro</button>
     <button class="btn-secondary" onclick="irHistorial()">Ir al historial</button>
@@ -467,15 +475,15 @@ body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--t
 
 </div><!-- /content -->
 
-<!-- ══ NAV BAR ══ -->
-<div class="nav-bar" id="main-nav">
+<!-- NAV BAR -->
+<div class="nav-bar">
   <div class="nav-item" onclick="nuevoRegistro()"><div class="nav-dot">🏠</div><span>Inicio</span></div>
-  <div class="nav-item active" id="nav-reg"><div class="nav-dot">📋</div><span>Registros</span></div>
+  <div class="nav-item active"><div class="nav-dot">📋</div><span>Registros</span></div>
   <div class="nav-item" onclick="toast('Próximamente')"><div class="nav-dot">📊</div><span>Reportes</span></div>
   <div class="nav-item" onclick="toast('Próximamente')"><div class="nav-dot">⚙️</div><span>Config.</span></div>
 </div>
 
-<!-- ══ MODAL APLICADOR ══ -->
+<!-- MODAL APLICADOR -->
 <div class="modal-overlay" id="modal-aplicador" onclick="cerrarModal(event)">
   <div class="modal">
     <div class="modal-title">Agregar aplicador</div>
@@ -486,7 +494,7 @@ body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--t
   </div>
 </div>
 
-<!-- ══ INSTALL BANNER ══ -->
+<!-- INSTALL BANNER -->
 <div id="install-banner">
   <div class="ib-text">
     <div class="ib-title">📲 Instalar Inocuidad App</div>
@@ -499,210 +507,320 @@ body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--t
 <div class="toast" id="toast-el"></div>
 
 <script>
-// ── Estado ──
-var estado = {
-  sector:'', codigo:'', productor:'', campo:'', variedad:'',
-  producto:'', ingrediente:'', tipo:'', fechaIni:'', fechaFin:'',
-  aplicadores:[], ingeniero:'',
-  clima:[], epp:[], equipo:'', agua:'', mezcla:'', etapa:''
-};
+// ══════════════════════════════════════════
+// BASE DE DATOS LOCAL — PRODUCTORES
+// Aquí agregas tus productores reales
+// Formato: { codigo, nombre }
+// ══════════════════════════════════════════
+var DB_PRODUCTORES = [
+  { codigo:'00439', nombre:'Reyes Pulido Martínez' },
+  { codigo:'00512', nombre:'Juan Carlos Gómez Torres' },
+  { codigo:'00318', nombre:'María Elena Ávila Ramos' },
+  { codigo:'00201', nombre:'Roberto Castillo Herrera' },
+  { codigo:'00755', nombre:'Ana Lucía Mendoza Vega' },
+  // ← Agrega más productores aquí
+];
+
+// ══════════════════════════════════════════
+// BASE DE DATOS LOCAL — CAMPOS
+// Formato: { numero, nombre, variedad }
+// ══════════════════════════════════════════
+var DB_CAMPOS = [
+  { numero:'1', nombre:'Rancho Nuevo',     variedad:'Amelali — Zarzamora' },
+  { numero:'2', nombre:'El Fresnal',       variedad:'Adelita — Fresa' },
+  { numero:'3', nombre:'La Loma',          variedad:'Nora — Frambuesa' },
+  { numero:'4', nombre:'Rancho Viejo',     variedad:'Draeger — Arándano' },
+  { numero:'5', nombre:'Los Pinos',        variedad:'Camino Real — Fresa' },
+  // ← Agrega más campos aquí
+];
+
+// ══════════════════════════════════════════
+// ESTADO Y VARIABLES
+// ══════════════════════════════════════════
 var pantallaActual = 1;
+var aplicadoresList = [];
+var fotosData = [];
+var chipValues = {};
 
 // ── PWA ──
 if ('serviceWorker' in navigator) {
-  window.addEventListener('load', function() { navigator.serviceWorker.register('sw.js').catch(function(){}); });
+  window.addEventListener('load', function(){ navigator.serviceWorker.register('sw.js').catch(function(){}); });
 }
 var deferredPrompt = null;
-window.addEventListener('beforeinstallprompt', function(e) {
-  e.preventDefault(); deferredPrompt = e;
+window.addEventListener('beforeinstallprompt', function(e){
+  e.preventDefault(); deferredPrompt=e;
   document.getElementById('install-banner').classList.add('show');
 });
-function instalarPWA() {
-  if (!deferredPrompt) return;
+function instalarPWA(){
+  if(!deferredPrompt)return;
   deferredPrompt.prompt();
-  deferredPrompt.userChoice.then(function() { deferredPrompt=null; document.getElementById('install-banner').classList.remove('show'); });
+  deferredPrompt.userChoice.then(function(){ deferredPrompt=null; document.getElementById('install-banner').classList.remove('show'); });
 }
 
 // ── Toast ──
-function toast(msg) {
-  var t = document.getElementById('toast-el');
-  t.textContent = msg; t.classList.add('show');
-  setTimeout(function(){ t.classList.remove('show'); }, 2500);
+function toast(msg){
+  var t=document.getElementById('toast-el');
+  t.textContent=msg; t.classList.add('show');
+  setTimeout(function(){ t.classList.remove('show'); },2500);
 }
 
 // ── Navegación ──
-var titulos = ['','Registro de aplicación','Producto aplicado','Aplicadores','Condiciones de aplicación','Confirmar registro','Registro completado'];
-var subtitulos = ['','Productor, campo y sector','Paso 2 de 5','Paso 3 de 5','Paso 4 de 5','Paso 5 de 5 — Revisa antes de guardar',''];
-var progresos = ['','20','40','60','80','100','100'];
+var titulos=['','Registro de aplicación','Producto aplicado','Aplicadores','Condiciones y evidencia','Confirmar registro','Registro completado'];
+var subtitulos=['','Productor, campo y sector','Paso 2 de 5','Paso 3 de 5','Paso 4 de 5','Paso 5 de 5 — Revisa antes de guardar',''];
+var progresos=['','20','40','60','80','100','100'];
 
-function ir(n) {
-  if (n > 1 && n <= 5) {
-    // validar pantalla actual básico
-    if (pantallaActual === 1 && !document.getElementById('f-productor').value.trim()) {
-      toast('⚠️ Ingresa el nombre del productor'); return;
-    }
-    if (pantallaActual === 2 && !document.getElementById('f-producto').value.trim()) {
-      toast('⚠️ Ingresa el nombre del producto'); return;
-    }
+function ir(n){
+  // Validaciones básicas
+  if(n>1 && pantallaActual===1){
+    if(!document.getElementById('f-productor').value.trim()){ toast('⚠️ Ingresa el nombre del productor'); return; }
   }
-  if (n === 5) generarResumen();
+  if(n>2 && pantallaActual===2){
+    if(!document.getElementById('f-producto').value.trim()){ toast('⚠️ Ingresa el nombre del producto'); return; }
+  }
+  if(n===5) generarResumen();
   document.getElementById('screen-'+pantallaActual).classList.remove('active');
   document.getElementById('screen-'+n).classList.add('active');
-  pantallaActual = n;
-  document.getElementById('header-title').textContent = titulos[n];
-  document.getElementById('header-sub').textContent = subtitulos[n];
-  document.getElementById('progress').style.width = progresos[n] + '%';
-  // dots
-  for (var i=0;i<5;i++) {
-    var d = document.getElementById('dot'+i);
-    d.className = 'dot';
-    if (i < n-1) d.classList.add('done');
-    else if (i === n-1) d.classList.add('active');
+  pantallaActual=n;
+  document.getElementById('header-title').textContent=titulos[n];
+  document.getElementById('header-sub').textContent=subtitulos[n];
+  document.getElementById('progress').style.width=progresos[n]+'%';
+  for(var i=0;i<5;i++){
+    var d=document.getElementById('dot'+i); d.className='dot';
+    if(i<n-1) d.classList.add('done');
+    else if(i===n-1) d.classList.add('active');
   }
-  // ocultar dots y header en pantalla 6
-  document.getElementById('step-dots-wrap').style.display = n===6 ? 'none' : '';
-  document.getElementById('progress').parentElement.style.display = n===6 ? 'none' : '';
-  document.getElementById('header-sub').style.display = n===6 ? 'none' : '';
+  document.getElementById('step-dots-wrap').style.display=n===6?'none':'';
+  document.getElementById('progress').parentElement.style.display=n===6?'none':'';
+  document.getElementById('header-sub').style.display=n===6?'none':'';
+  // Cerrar autocompletes
+  document.getElementById('ac-productores').style.display='none';
+  document.getElementById('ac-campos').style.display='none';
   window.scrollTo(0,0);
 }
 
-// ── Tipo insumo ──
-function selectTipo(el, tipo) {
-  document.querySelectorAll('#type-chips .type-chip').forEach(function(c){ c.className='type-chip inactive'; });
-  el.className = 'type-chip active';
-  estado.tipo = tipo;
+// ── AUTOCOMPLETE PRODUCTORES ──
+function buscarProductor(val){
+  val=val.trim();
+  var badge=document.getElementById('badge-codigo');
+  badge.textContent='';
+  if(val.length<2){ document.getElementById('ac-productores').style.display='none'; return; }
+  var resultados=DB_PRODUCTORES.filter(function(p){
+    return p.codigo.startsWith(val) || p.nombre.toLowerCase().includes(val.toLowerCase());
+  });
+  if(!resultados.length){ document.getElementById('ac-productores').style.display='none'; return; }
+  var html=resultados.map(function(p){
+    return '<div class="autocomplete-item" onclick="seleccionarProductor(\''+p.codigo+'\',\''+p.nombre+'\')"><strong>'+p.codigo+'</strong> — '+p.nombre+'</div>';
+  }).join('');
+  var ac=document.getElementById('ac-productores');
+  ac.innerHTML=html; ac.style.display='block';
+  // Si hay match exacto, llenar automático
+  var exact=DB_PRODUCTORES.find(function(p){ return p.codigo===val; });
+  if(exact){ seleccionarProductor(exact.codigo, exact.nombre); }
+}
+function seleccionarProductor(codigo, nombre){
+  document.getElementById('f-codigo').value=codigo;
+  document.getElementById('f-productor').value=nombre;
+  document.getElementById('ac-productores').style.display='none';
+  document.getElementById('badge-codigo').textContent='✓ Autocompletado';
 }
 
-// ── Toggle chips ──
-function toggleChip(el) {
-  el.classList.toggle('on'); el.classList.toggle('off');
-  var chk = el.querySelector('.chk');
-  if (el.classList.contains('on')) chk.textContent = '✓';
-  else chk.textContent = '';
+// ── AUTOCOMPLETE CAMPOS ──
+function buscarCampo(val){
+  val=val.trim();
+  var badge=document.getElementById('badge-campo');
+  badge.textContent='';
+  if(!val){ document.getElementById('ac-campos').style.display='none'; return; }
+  var exact=DB_CAMPOS.find(function(c){ return c.numero===val; });
+  if(exact){
+    seleccionarCampo(exact);
+    return;
+  }
+  var resultados=DB_CAMPOS.filter(function(c){ return c.numero.startsWith(val); });
+  if(!resultados.length){ document.getElementById('ac-campos').style.display='none'; return; }
+  var html=resultados.map(function(c){
+    return '<div class="autocomplete-item" onclick="seleccionarCampoById(\''+c.numero+'\')"><strong>Campo '+c.numero+'</strong> — '+c.nombre+' · '+c.variedad+'</div>';
+  }).join('');
+  var ac=document.getElementById('ac-campos');
+  ac.innerHTML=html; ac.style.display='block';
 }
-function toggleChipSingle(el, groupId) {
-  var group = document.getElementById(groupId);
-  group.querySelectorAll('.check-chip, .etapa-chip').forEach(function(c){
+function seleccionarCampoById(numero){
+  var c=DB_CAMPOS.find(function(x){ return x.numero===numero; });
+  if(c) seleccionarCampo(c);
+}
+function seleccionarCampo(c){
+  document.getElementById('f-num-campo').value=c.numero;
+  document.getElementById('f-campo').value=c.nombre;
+  document.getElementById('f-variedad').value=c.variedad;
+  document.getElementById('ac-campos').style.display='none';
+  document.getElementById('badge-campo').textContent='✓ Autocompletado';
+}
+
+// Cerrar autocomplete al tocar fuera
+document.addEventListener('click', function(e){
+  if(!e.target.closest('.field-wrap')){
+    document.getElementById('ac-productores').style.display='none';
+    document.getElementById('ac-campos').style.display='none';
+  }
+});
+
+// ── CHIPS ──
+function selectChipGroup(el, groupId, valor){
+  var group=document.getElementById(groupId);
+  group.querySelectorAll('.type-chip,.mercado-chip').forEach(function(c){
+    c.classList.remove('active'); c.classList.add('inactive');
+  });
+  el.classList.add('active'); el.classList.remove('inactive');
+  chipValues[groupId]=valor;
+}
+function toggleChip(el){
+  el.classList.toggle('on'); el.classList.toggle('off');
+  var chk=el.querySelector('.chk');
+  if(el.classList.contains('on')) chk.textContent='✓'; else chk.textContent='';
+}
+function toggleChipSingle(el, groupId){
+  var group=document.getElementById(groupId);
+  group.querySelectorAll('.check-chip,.etapa-chip').forEach(function(c){
     c.classList.remove('on'); c.classList.add('off');
-    var chk = c.querySelector('.chk'); if(chk) chk.textContent='';
+    var chk=c.querySelector('.chk'); if(chk) chk.textContent='';
   });
   el.classList.add('on'); el.classList.remove('off');
-  var chk = el.querySelector('.chk'); if(chk) chk.textContent='✓';
+  var chk=el.querySelector('.chk'); if(chk) chk.textContent='✓';
 }
 
-// ── Aplicadores ──
-var aplicadoresList = [];
-function abrirModalAplicador() {
-  document.getElementById('m-nombre').value = '';
-  document.getElementById('m-rol').value = '';
+// ── APLICADORES ──
+function abrirModalAplicador(){
+  document.getElementById('m-nombre').value='';
+  document.getElementById('m-rol').value='';
   document.getElementById('modal-aplicador').classList.add('open');
-  setTimeout(function(){ document.getElementById('m-nombre').focus(); }, 300);
+  setTimeout(function(){ document.getElementById('m-nombre').focus(); },300);
 }
-function cerrarModal(e) {
-  if (e.target === document.getElementById('modal-aplicador'))
+function cerrarModal(e){
+  if(e.target===document.getElementById('modal-aplicador'))
     document.getElementById('modal-aplicador').classList.remove('open');
 }
-function confirmarAplicador() {
-  var nombre = document.getElementById('m-nombre').value.trim();
-  var rol = document.getElementById('m-rol').value.trim() || 'Aplicador';
-  if (!nombre) { toast('⚠️ Ingresa el nombre'); return; }
-  aplicadoresList.push({ nombre: nombre, rol: rol });
+function confirmarAplicador(){
+  var nombre=document.getElementById('m-nombre').value.trim();
+  var rol=document.getElementById('m-rol').value.trim()||'Aplicador';
+  if(!nombre){ toast('⚠️ Ingresa el nombre'); return; }
+  aplicadoresList.push({nombre:nombre,rol:rol});
   renderAplicadores();
   document.getElementById('modal-aplicador').classList.remove('open');
   toast('✅ Aplicador agregado');
 }
-function renderAplicadores() {
-  var colores = ['#E1F5EE','#FAEEDA','#F1EFE8','#EAF3DE'];
-  var tcolores = ['#085041','#633806','#444441','#27500A'];
-  var html = aplicadoresList.map(function(a,i){
-    var initials = a.nombre.split(' ').map(function(w){return w[0];}).slice(0,2).join('').toUpperCase();
-    var ci = i % colores.length;
-    return '<div class="applicator-row"><div class="avatar" style="background:'+colores[ci]+';color:'+tcolores[ci]+'">'+initials+'</div><div style="flex:1"><div class="applicator-name">'+a.nombre+'</div><div class="applicator-role">'+a.rol+'</div></div><span class="tag tag-green">Activo</span></div>';
+function renderAplicadores(){
+  var cols=['#E1F5EE','#FAEEDA','#F1EFE8','#EAF3DE'];
+  var tcols=['#085041','#633806','#444441','#27500A'];
+  var html=aplicadoresList.map(function(a,i){
+    var ini=a.nombre.split(' ').map(function(w){return w[0];}).slice(0,2).join('').toUpperCase();
+    var ci=i%cols.length;
+    return '<div class="applicator-row"><div class="avatar" style="background:'+cols[ci]+';color:'+tcols[ci]+'">'+ini+'</div><div style="flex:1"><div class="applicator-name">'+a.nombre+'</div><div class="applicator-role">'+a.rol+'</div></div><span class="tag tag-green">Activo</span></div>';
   }).join('');
-  html += '<div class="add-btn" onclick="abrirModalAplicador()"><div class="add-circle">+</div><span>Agregar aplicador</span></div>';
-  document.getElementById('lista-aplicadores').innerHTML = html;
+  html+='<div class="add-btn" onclick="abrirModalAplicador()"><div class="add-circle">+</div><span>Agregar aplicador</span></div>';
+  document.getElementById('lista-aplicadores').innerHTML=html;
 }
 
-// ── Generar resumen ──
-function generarResumen() {
-  // leer chips clima
-  var clima = []; document.querySelectorAll('#clima-chips .check-chip.on').forEach(function(c){ clima.push(c.textContent.trim().replace('✓','').trim()); });
-  var epp = []; document.querySelectorAll('#epp-chips .check-chip.on').forEach(function(c){ epp.push(c.textContent.trim().replace('✓','').trim()); });
-  var equipo = ''; var ec = document.querySelector('#equipo-chips .check-chip.on'); if(ec) equipo = ec.textContent.trim().replace('✓','').trim();
-  var etapa = ''; var et = document.querySelector('#etapa-chips .etapa-chip.on'); if(et) etapa = et.textContent.trim();
+// ── FOTOS ──
+function agregarFotos(input){
+  var files=Array.from(input.files);
+  files.forEach(function(file){
+    var reader=new FileReader();
+    reader.onload=function(e){
+      fotosData.push(e.target.result);
+      renderFotos();
+    };
+    reader.readAsDataURL(file);
+  });
+  input.value='';
+}
+function renderFotos(){
+  var grid=document.getElementById('foto-grid');
+  var html=fotosData.map(function(src,i){
+    return '<div class="foto-slot"><img src="'+src+'"><button class="f-del" onclick="eliminarFoto('+i+')">✕</button></div>';
+  }).join('');
+  html+='<div class="foto-slot foto-add" onclick="document.getElementById(\'foto-input\').click()"><div class="f-icon">📷</div><div class="f-label">Agregar foto</div></div>';
+  grid.innerHTML=html;
+}
+function eliminarFoto(i){
+  fotosData.splice(i,1);
+  renderFotos();
+}
 
-  var rows = [
+// ── RESUMEN ──
+function fmtDatetime(val){
+  if(!val) return '—';
+  var d=new Date(val);
+  var meses=['ene','feb','mar','abr','may','jun','jul','ago','sep','oct','nov','dic'];
+  return d.getDate()+' '+meses[d.getMonth()]+' '+d.getFullYear()+' '+d.getHours().toString().padStart(2,'0')+':'+d.getMinutes().toString().padStart(2,'0');
+}
+function generarResumen(){
+  var clima=[]; document.querySelectorAll('#clima-chips .check-chip.on').forEach(function(c){ clima.push(c.textContent.trim().replace('✓','').trim()); });
+  var epp=[]; document.querySelectorAll('#epp-chips .check-chip.on').forEach(function(c){ epp.push(c.textContent.trim().replace('✓','').trim()); });
+  var equipo=''; var ec=document.querySelector('#equipo-chips .check-chip.on'); if(ec) equipo=ec.textContent.trim().replace('✓','').trim();
+  var etapa=''; var et=document.querySelector('#etapa-chips .etapa-chip.on'); if(et) etapa=et.textContent.trim();
+  var rows=[
+    ['Productor', (document.getElementById('f-productor').value||'—')+' ['+( document.getElementById('f-codigo').value||'—')+']'],
     ['Sector', document.getElementById('f-sector').value||'—'],
-    ['Productor', document.getElementById('f-productor').value||'—'],
-    ['Campo', document.getElementById('f-campo').value||'—'],
+    ['Campo', (document.getElementById('f-num-campo').value||'—')+' — '+(document.getElementById('f-campo').value||'—')],
     ['Variedad', document.getElementById('f-variedad').value||'—'],
+    ['Hectáreas', (document.getElementById('f-has').value||'—')+' ha'],
+    ['Producción', chipValues['prod-chips']||'—'],
+    ['Mercado', chipValues['mercado-chips']||'—'],
     ['Producto', document.getElementById('f-producto').value||'—'],
-    ['Tipo', estado.tipo||'—'],
-    ['Aplicación', formatDateRange(document.getElementById('f-fecha-ini').value, document.getElementById('f-fecha-fin').value)],
-    ['Aplicadores', aplicadoresList.length ? aplicadoresList.length+' personas' : '—'],
+    ['Tipo', chipValues['type-chips']||'—'],
+    ['Inicio aplic.', fmtDatetime(document.getElementById('f-fecha-ini').value)],
+    ['Término aplic.', fmtDatetime(document.getElementById('f-fecha-fin').value)],
+    ['Aplicadores', aplicadoresList.length?aplicadoresList.length+' personas':'—'],
     ['Ingeniero', document.getElementById('f-ingeniero').value||'—'],
-    ['Clima', clima.length ? clima.join(', ') : '—'],
-    ['EPP', epp.length ? epp.join(', ') : '—'],
+    ['Clima', clima.length?clima.join(', '):'—'],
+    ['EPP', epp.length?epp.join(', '):'—'],
     ['Equipo', equipo||'—'],
     ['Agua usada', (document.getElementById('f-agua').value||'—')+' L'],
     ['Mezcla sobrante', (document.getElementById('f-mezcla').value||'—')+' L'],
     ['Etapa cultivo', etapa||'—'],
+    ['Fotos', fotosData.length?fotosData.length+' imagen(es)':'Sin fotos'],
   ];
-  var html = rows.map(function(r,i){
+  var html=rows.map(function(r,i){
     return (i>0?'<div class="s-divider"></div>':'')+'<div class="summary-row"><span class="summary-key">'+r[0]+'</span><span class="summary-val">'+r[1]+'</span></div>';
   }).join('');
-  document.getElementById('summary-content').innerHTML = html;
-}
-function formatDateRange(ini, fin) {
-  if (!ini) return '—';
-  var a = new Date(ini+' 12:00'); var meses=['ene','feb','mar','abr','may','jun','jul','ago','sep','oct','nov','dic'];
-  var s = a.getDate()+' '+meses[a.getMonth()];
-  if (fin) { var b=new Date(fin+' 12:00'); s += ' – '+b.getDate()+' '+meses[b.getMonth()]+' '+b.getFullYear(); }
-  else s += ' '+a.getFullYear();
-  return s;
+  document.getElementById('summary-content').innerHTML=html;
 }
 
-// ── Guardar ──
-function guardarRegistro() {
-  var btn = document.getElementById('btn-guardar');
-  btn.innerHTML = '<span class="spinner"></span>Guardando...'; btn.disabled = true;
-  setTimeout(function() {
-    btn.innerHTML = 'Guardar registro'; btn.disabled = false;
-    var folio = 'INOC-'+new Date().getFullYear()+'-'+String(Math.floor(Math.random()*90000)+10000);
-    document.getElementById('folio-num').textContent = folio;
-    var ahora = new Date();
-    document.getElementById('folio-date').textContent = ahora.toLocaleDateString('es-MX',{day:'numeric',month:'long',year:'numeric'})+' · '+ahora.toLocaleTimeString('es-MX',{hour:'2-digit',minute:'2-digit'});
+// ── GUARDAR ──
+function guardarRegistro(){
+  var btn=document.getElementById('btn-guardar');
+  btn.innerHTML='<span class="spinner"></span>Guardando...'; btn.disabled=true;
+  setTimeout(function(){
+    btn.innerHTML='Guardar registro'; btn.disabled=false;
+    var folio='INOC-'+new Date().getFullYear()+'-'+String(Math.floor(Math.random()*90000)+10000);
+    document.getElementById('folio-num').textContent=folio;
+    var ahora=new Date();
+    document.getElementById('folio-date').textContent=ahora.toLocaleDateString('es-MX',{day:'numeric',month:'long',year:'numeric'})+' · '+ahora.toLocaleTimeString('es-MX',{hour:'2-digit',minute:'2-digit'});
     ir(6);
-  }, 1200);
+  },1200);
 }
 
-// ── Pantalla 6 ──
-function nuevoRegistro() {
-  // limpiar
-  aplicadoresList = [];
+// ── RESET ──
+function nuevoRegistro(){
+  aplicadoresList=[]; fotosData=[]; chipValues={};
   document.querySelectorAll('.field-input').forEach(function(i){ i.value=''; });
-  document.querySelectorAll('[type=date]').forEach(function(i){ i.value=''; });
-  document.querySelectorAll('.type-chip').forEach(function(c){ c.className='type-chip inactive'; });
-  document.querySelectorAll('.check-chip').forEach(function(c){ c.className='check-chip off'; c.querySelector('.chk').textContent=''; });
+  document.querySelectorAll('input[type=datetime-local]').forEach(function(i){ i.value=''; });
+  document.querySelectorAll('input[type=number]').forEach(function(i){ i.value=''; });
+  document.querySelectorAll('.type-chip,.mercado-chip').forEach(function(c){ c.classList.remove('active'); c.classList.add('inactive'); });
+  document.querySelectorAll('.check-chip').forEach(function(c){ c.className='check-chip off'; var chk=c.querySelector('.chk'); if(chk) chk.textContent=''; });
   document.querySelectorAll('.etapa-chip').forEach(function(c){ c.className='etapa-chip off'; });
-  document.querySelectorAll('#num-input-box input').forEach(function(i){ i.value=''; });
-  document.getElementById('f-agua').value=''; document.getElementById('f-mezcla').value='';
+  document.getElementById('badge-codigo').textContent='';
+  document.getElementById('badge-campo').textContent='';
   renderAplicadores();
+  renderFotos();
   ir(1);
 }
-function verPDF() { toast('📄 Generando PDF...'); }
-function compartir() {
-  var folio = document.getElementById('folio-num').textContent;
-  if (navigator.share) { navigator.share({ title:'Registro Inocuidad', text:'Folio: '+folio }); }
-  else { toast('📋 Folio copiado: '+folio); }
+function verPDF(){ toast('📄 Generando PDF...'); }
+function compartir(){
+  var folio=document.getElementById('folio-num').textContent;
+  if(navigator.share){ navigator.share({title:'Registro Inocuidad',text:'Folio: '+folio}); }
+  else{ toast('📋 Folio: '+folio); }
 }
-function irHistorial() { toast('📊 Historial próximamente'); }
-</script>
-
-<script>
-if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('sw.js').catch(function(){});
-}
+function irHistorial(){ toast('📊 Historial próximamente'); }
 </script>
 </body>
 </html>
